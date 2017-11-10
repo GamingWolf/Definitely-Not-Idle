@@ -2,8 +2,7 @@
 A clicker game made with unity.
 
 # Download
-When a release is avaiable you can download it [here](https://github.com/GamingWolf/Definitely-Not-Idle/releases).
-Current version : -//- NO RELEASE!
+Current version : [-//- NO RELEASE!](https://github.com/GamingWolf/Definitely-Not-Idle/releases)
 
 Alternativly you can clone the repo and build it yourself.
 
