@@ -5,10 +5,11 @@ using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour {
 
-	public Text ducatDisp, stageDisp;
+	public Text ducatDisp, stageDisp, dpsDisp;
 
 	public float ducats = 0;
 	public int stage = 1;
+	public float dps;
 				
 
 	// Use this for initialization
