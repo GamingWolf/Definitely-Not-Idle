@@ -8,7 +8,7 @@ public class GameManager : MonoBehaviour {
 	public Text ducatDisp, stageDisp, dpsDisp;
 
 	public float ducats = 0;
-	public int stage = 1, bossTimer = 30, heroDamage = 0, dps = 0;
+	public int stage = 1, bossTimer = 30, heroDamage = 0, dps = 0, clickDamage = 0;
 				
 
 	// Use this for initialization
