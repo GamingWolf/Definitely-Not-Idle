@@ -8,7 +8,7 @@ public class GameManager : MonoBehaviour {
 	public Text ducatDisp, stageDisp, dpsDisp;
 
 	public float ducats = 0;
-	public int stage = 1, bossTimer = 30, heroDamage = 0, dps = 0, clickDamage = 0;
+	public int stage = 1, bossTimer = 30, heroClickDamage = 0, dps = 0, EnemyHP = 500;
 				
 
 	// Use this for initialization
@@ -21,5 +21,10 @@ public class GameManager : MonoBehaviour {
 		ducatDisp.text = "Ducats: " + ducats;
 		stageDisp.text = "Stage: " + stage;
 		dpsDisp.text = "Idle DPS: " + dps;
+	}
+
+	public void EnemyInit()
+	{
+		EnemyHP = 500 * (stage / 200);
 	}
 }

@@ -1,24 +1,23 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 
-public class Click : MonoBehaviour {
+public class DamageScript : MonoBehaviour {
 
 	public GameManager GM;
 
 	// Use this for initialization
 	void Start () {
-		
+		InvokeRepeating("DPS", 2.0f, 1.0f);
 	}
-	
+
+	public void DPS()
+	{
+		GM.EnemyHP -= GM.dps;
+	}
+
 	// Update is called once per frame
 	void Update () {
 		
-	}
-
-	public void DamageClick()
-	{
-		GM.EnemyHP -= GM.heroClickDamage;
 	}
 }
