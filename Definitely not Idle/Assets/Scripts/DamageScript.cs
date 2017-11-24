@@ -13,7 +13,7 @@ public class DamageScript : MonoBehaviour {
 
 	public void DPS()
 	{
-		GM.EnemyHP -= GM.dps;
+		GM.enemyHP -= GM.dps;
 	}
 
 	// Update is called once per frame

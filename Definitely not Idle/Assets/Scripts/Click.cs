@@ -19,6 +19,6 @@ public class Click : MonoBehaviour {
 
 	public void DamageClick()
 	{
-		GM.EnemyHP -= GM.heroClickDamage;
+		GM.enemyHP -= GM.heroClickDamage;
 	}
 }
