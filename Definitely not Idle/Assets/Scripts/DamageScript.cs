@@ -8,7 +8,7 @@ public class DamageScript : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		InvokeRepeating("DPS", 2.0f, 1.0f);
+		InvokeRepeating("DPS", 1.0f, 1.0f);
 	}
 
 	public void DPS()
