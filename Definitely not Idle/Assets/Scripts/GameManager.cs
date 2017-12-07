@@ -45,7 +45,7 @@ public class GameManager : MonoBehaviour {
 		if (enemyHP <= 0) 
 		{
 			stage += 1;
-			enemyHP = 500 / 100 * stage + Mathf.Pow(10, stage);
+			enemyHP = 500 / 100 * stage + Mathf.Pow(2, stage);
 			stagesUntilBoss -= 1;
 			killedEn += 1;
 			killedEnemies.text = "Killed: " + killedEn;
