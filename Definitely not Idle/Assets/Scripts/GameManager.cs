@@ -5,20 +5,24 @@ using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour {
 
-	public Text ducatDisp, stageDisp, dpsDisp, placeHP, killedEnemies;
+	public Text ducatDisp, stageDisp, dpsDisp, healthText, killedEnemies, clickDamageDisp;
 
-	public int  ducats = 0,
-				stage = 1, 
+	public Slider healthbar;
+
+	public GameObject UpgradePanel;
+
+	public int  stage = 1, 
 				bossTimer = 30, 
-				heroClickDamage = 10, 
-				dps = 10, 
 				bossesKilled = 0, 
 				stagesUntilBoss = 100,
 				killedEn = 0;
 
-	public double    enemyHP = 500,
-				     enemyHPMax,
-					 bossHP = 1000;
+	public double   ducats = 0, 
+					enemyHP = 500,
+					dps = 10, 
+					heroClickDamage = 10, 
+				    enemyHPMax,
+					bossHP = 1000;
 
 	public bool firstStart = true;
 		
@@ -28,6 +32,7 @@ public class GameManager : MonoBehaviour {
 		{
 			enemyHP = 100 * ( 1 + (( stage - 1 ) * ( stage - 1 ))  * 0.015 );
 			enemyHPMax = enemyHP;
+			UpgradePanel.SetActive (false);
 			firstStart = false;
 		}
 	}
@@ -37,17 +42,15 @@ public class GameManager : MonoBehaviour {
 		ducatDisp.text = "Ducats: " + ducats;
 		stageDisp.text = "Stage: " + stage;
 		dpsDisp.text = "Idle DPS: " + dps;
-		placeHP.text = "HP: " + enemyHP + " / " + enemyHPMax;
+		clickDamageDisp.text = "Hero Damage: " + heroClickDamage;
+		healthText.text = "HP: " + enemyHP + " / " + enemyHPMax;
+		healthbar.value = CalculateHealth ();
 		EnemyInit ();
-		GiveCash ();
 	}
 
 	public void GiveCash()
 	{
-		if (enemyHP <= 0) 
-		{
-			ducats +=  (int)(enemyHP * 0.1);
-		}
+		ducats += Mathf.Round((float)(enemyHP * 0.1));
 	}
 
 	public void EnemyInit()
@@ -56,6 +59,7 @@ public class GameManager : MonoBehaviour {
 			stage += 1;
 			enemyHP = 100 * (1 + ((stage - 1) * (stage - 1)) * 0.015);
 			enemyHPMax = enemyHP;
+			GiveCash ();
 			stagesUntilBoss -= 1;
 			killedEn += 1;
 			killedEnemies.text = "Enemies killed: " + killedEn;
@@ -72,5 +76,15 @@ public class GameManager : MonoBehaviour {
 		enemyHPMax = bossHP;
 		enemyHP = bossHP;
 		stagesUntilBoss = 100;
+	}
+
+	public float CalculateHealth()
+	{
+		return (float)enemyHP / (float)enemyHPMax;
+	}
+
+	public void Exit()
+	{
+		Application.Quit ();
 	}
 }
