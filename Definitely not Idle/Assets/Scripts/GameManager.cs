@@ -16,8 +16,9 @@ public class GameManager : MonoBehaviour {
 				stagesUntilBoss = 100,
 				killedEn = 0;
 
-	public double   enemyHP = 500,
-					bossHP = 1000;
+	public double    enemyHP = 500,
+				     enemyHPMax,
+					 bossHP = 1000;
 
 	public bool firstStart = true;
 		
@@ -25,7 +26,8 @@ public class GameManager : MonoBehaviour {
 	void Start () {
 		if (firstStart) 
 		{
-			enemyHP = 500 / 100 * stage;
+			enemyHP = 100 * ( 1 + (( stage - 1 ) * ( stage - 1 ))  * 0.015 );
+			enemyHPMax = enemyHP;
 			firstStart = false;
 		}
 	}
@@ -35,25 +37,40 @@ public class GameManager : MonoBehaviour {
 		ducatDisp.text = "Ducats: " + ducats;
 		stageDisp.text = "Stage: " + stage;
 		dpsDisp.text = "Idle DPS: " + dps;
-		placeHP.text = "HP: " + enemyHP;
+		placeHP.text = "HP: " + enemyHP + " / " + enemyHPMax;
 		EnemyInit ();
+		GiveCash ();
 	}
 
-
-	public void EnemyInit()
+	public void GiveCash()
 	{
 		if (enemyHP <= 0) 
 		{
+			ducats +=  (int)(enemyHP * 0.1);
+		}
+	}
+
+	public void EnemyInit()
+	{
+		if (enemyHP <= 0 && stagesUntilBoss > 0) {
 			stage += 1;
-			enemyHP = 500 / 100 * stage + Mathf.Pow(2, stage);
+			enemyHP = 100 * (1 + ((stage - 1) * (stage - 1)) * 0.015);
+			enemyHPMax = enemyHP;
 			stagesUntilBoss -= 1;
 			killedEn += 1;
-			killedEnemies.text = "Killed: " + killedEn;
+			killedEnemies.text = "Enemies killed: " + killedEn;
+		} 
+		else if (stagesUntilBoss <= 0 && enemyHP <= 0) 
+		{
+			BossInit ();
 		}
 	}
 
 	public void BossInit()
 	{
-		bossHP = 1000 * (stage / 100 + bossesKilled);
+		bossHP = 1000 * ( 1 + (( stage + bossesKilled ) * ( stage + bossesKilled ))  * 0.015 );
+		enemyHPMax = bossHP;
+		enemyHP = bossHP;
+		stagesUntilBoss = 100;
 	}
 }
