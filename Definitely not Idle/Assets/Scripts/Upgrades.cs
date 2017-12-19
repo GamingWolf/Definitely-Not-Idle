@@ -33,6 +33,7 @@ public class Upgrades : MonoBehaviour {
 	{
 		if (GM.ducats >= Mathf.Round((float)dpsCostInt)) 
 		{
+			GM.ducats -= Mathf.Round ((float)dpsCostInt);
 			dpsLvlInt += 1;
 			GM.dps = GM.dps + (dpsLvlInt * (1.07 + (GM.dps / 100)));
 			dpsCostInt = dpsLvlInt * ((5 + dpsLvlInt) * 1.07 * (dpsLvlInt * 0.7));
@@ -43,6 +44,7 @@ public class Upgrades : MonoBehaviour {
 	{
 		if (GM.ducats >= Mathf.Round((float)heroCostInt)) 
 		{
+			GM.ducats -= Mathf.Round ((float)heroCostInt);
 			heroLvlInt += 1;
 			GM.heroClickDamage = GM.heroClickDamage + (heroLvlInt * (1.10 + (GM.heroClickDamage / 100)));
 			heroCostInt = heroLvlInt * ((5 + heroLvlInt) * 1.07 * (heroLvlInt * 0.7));
