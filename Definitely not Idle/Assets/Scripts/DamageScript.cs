@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -8,12 +9,12 @@ public class DamageScript : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		InvokeRepeating("DPS", 1.0f, 1.0f);
+		InvokeRepeating("DPS", 1.0f, 0.1f);
 	}
 
 	public void DPS()
 	{
-		GM.enemyHP -= Mathf.Round((float)GM.dps);
+		GM.enemyHP -= Math.Round(GM.dps);
 	}
 
 	// Update is called once per frame

@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -42,9 +43,9 @@ public class GameManager : MonoBehaviour {
 	void Update () {
 		ducatDisp.text = "Ducats: " + ducats;
 		stageDisp.text = "Stage: " + stage;
-		dpsDisp.text = "Idle DPS: " + Mathf.Round((float)dps);
-		clickDamageDisp.text = "Hero Damage: " + Mathf.Round((float)heroClickDamage);
-		healthText.text = "HP: " + Mathf.Round((float)enemyHP) + " / " + Mathf.Round((float)enemyHPMax);
+		dpsDisp.text = "Idle DPS: " + Math.Round(dps);
+		clickDamageDisp.text = "Hero Damage: " + Math.Round(heroClickDamage);
+		healthText.text = "HP: " + Math.Round(enemyHP) + " / " + Math.Round(enemyHPMax);
 		healthbar.value = CalculateHealth ();
 		EnemyInit ();
 	}
@@ -58,7 +59,7 @@ public class GameManager : MonoBehaviour {
 	{
 		if (enemyHP <= 0 && stagesUntilBoss > 0) {
 			stage += 1;
-			enemyHP = Mathf.Round(100 * (float)(1 + ((stage - 1) * (stage - 1)) * 0.015));
+			enemyHP = Math.Round(100 * (1 + ((stage - 1) * (stage - 1)) * 0.015));
 			enemyHPMax = enemyHP;
 			GiveCash ();
 			stagesUntilBoss -= 1;
@@ -73,7 +74,7 @@ public class GameManager : MonoBehaviour {
 
 	public void BossInit()
 	{
-		bossHP = Mathf.Round(1000 * (float)( 1 + (( stage + bossesKilled ) * ( stage + bossesKilled ))  * 0.015 ));
+		bossHP = Math.Round(1000 * ( 1 + (( stage + bossesKilled ) * ( stage + bossesKilled ))  * 0.015 ));
 		enemyHPMax = bossHP;
 		enemyHP = bossHP;
 		stagesUntilBoss = 100;
