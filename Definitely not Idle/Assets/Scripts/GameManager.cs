@@ -35,6 +35,7 @@ public class GameManager : MonoBehaviour {
 			UpgradePanel.SetActive (false);
 			firstStart = false;
 		}
+		Application.runInBackground = true;
 	}
 	
 	// Update is called once per frame
