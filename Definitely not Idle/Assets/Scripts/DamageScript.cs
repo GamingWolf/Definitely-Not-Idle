@@ -13,7 +13,7 @@ public class DamageScript : MonoBehaviour {
 
 	public void DPS()
 	{
-		GM.enemyHP -= GM.dps;
+		GM.enemyHP -= Mathf.Round((float)GM.dps);
 	}
 
 	// Update is called once per frame
