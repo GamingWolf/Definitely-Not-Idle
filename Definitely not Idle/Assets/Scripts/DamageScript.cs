@@ -19,15 +19,9 @@ public class DamageScript : MonoBehaviour {
 		do 
 		{
 			GM.enemyHP -= Math.Round (GM.dps);
-			GM.a++;
 			yield return new WaitForSeconds((float)GM.tickRate);
 		} while(true);
 	}
-
-	/*public void DPSv()
-	{
-		GM.enemyHP -= Math.Round(GM.dps);
-	}*/
 
 	// Update is called once per frame
 	void Update () {

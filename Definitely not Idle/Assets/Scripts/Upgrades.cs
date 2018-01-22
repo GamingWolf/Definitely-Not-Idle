@@ -79,4 +79,9 @@ public class Upgrades : MonoBehaviour {
 			UpgradePanel.SetActive (true);
 		}
 	}
+
+	public IEnumerator ValueScaler(double number)
+	{
+		
+	}
 }
