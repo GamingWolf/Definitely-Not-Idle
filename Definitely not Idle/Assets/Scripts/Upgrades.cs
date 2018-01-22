@@ -15,6 +15,7 @@ public class Upgrades : MonoBehaviour {
 	public double  	dpsLvlInt = 1,
 					heroLvlInt = 1,
 					tickCostInt = 1000,
+					tickLvlint = 0.25,
 					dpsCostInt = 10,
 					heroCostInt = 10;
 
@@ -60,18 +61,10 @@ public class Upgrades : MonoBehaviour {
 		if (GM.ducats >= Math.Round (tickCostInt) && GM.tickRate > 0.0001) 
 		{
 			GM.ducats -= Math.Round (tickCostInt);
-			//1 to 0.5 = (-x² + 2)/2
-			//0.5 -> 0 (1/x)/2
-			if (GM.tickRate >= 0.5) 
-			{
-				GM.tickRate = (Math.Pow ((-GM.tickRate), 2) + 2) / 2;
-			}
-			else if(GM.tickRate < 0.5)
-			{
-				GM.tickRate = (1 / GM.tickRate) / 2;
-			}
-			//GM.tickRate = Mathf.Pow(4, (float)(-GM.tickRate));
+			//function 1/x +1 
+			GM.tickRate = 1/(tickLvlint + 1);
 			tickCostInt = tickCostInt * 2;
+			tickLvlint += 0.25;
 		}
 	}
 
