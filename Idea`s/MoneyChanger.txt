@@ -1,0 +1,34 @@
+	//Not to many numbers for the money	
+		else if (ducats > (Mathf.Pow (10, 92))) ducatDisp.text =  "Ducats: " + (ducats / (Mathf.Pow (10, 92))).ToString() + "AE";
+		else if (ducats > (Mathf.Pow (10, 89))) ducatDisp.text =  "Ducats: " + (ducats / (Mathf.Pow (10, 89))).ToString() + "AD";
+		else if (ducats > (Mathf.Pow (10, 86))) ducatDisp.text =  "Ducats: " + (ducats / (Mathf.Pow (10, 86))).ToString() + "AC";
+		else if (ducats > (Mathf.Pow (10, 83))) ducatDisp.text =  "Ducats: " + (ducats / (Mathf.Pow (10, 83))).ToString() + "AB";
+		else if (ducats > (Mathf.Pow (10, 80))) ducatDisp.text =  "Ducats: " + (ducats / (Mathf.Pow (10, 80))).ToString() + "AA";
+	        else if (ducats > (Mathf.Pow (10, 77))) ducatDisp.text =  "Ducats: " + (ducats / (Mathf.Pow (10, 77))).ToString() + "Z";
+		else if (ducats > (Mathf.Pow (10, 74))) ducatDisp.text =  "Ducats: " + (ducats / (Mathf.Pow (10, 74))).ToString() + "Y";
+		else if (ducats > (Mathf.Pow (10, 71))) ducatDisp.text =  "Ducats: " + (ducats / (Mathf.Pow (10, 71))).ToString() + "X";
+		else if (ducats > (Mathf.Pow (10, 68))) ducatDisp.text =  "Ducats: " + (ducats / (Mathf.Pow (10, 68))).ToString() + "W";
+		else if (ducats > (Mathf.Pow (10, 65))) ducatDisp.text =  "Ducats: " + (ducats / (Mathf.Pow (10, 65))).ToString() + "V";
+		else if (ducats > (Mathf.Pow (10, 62))) ducatDisp.text =  "Ducats: " + (ducats / (Mathf.Pow (10, 62))).ToString() + "U";
+		else if (ducats > (Mathf.Pow (10, 59))) ducatDisp.text =  "Ducats: " + (ducats / (Mathf.Pow (10, 59))).ToString() + "T";
+		else if (ducats > (Mathf.Pow (10, 56))) ducatDisp.text =  "Ducats: " + (ducats / (Mathf.Pow (10, 56))).ToString() + "S";
+		else if (ducats > (Mathf.Pow (10, 53))) ducatDisp.text =  "Ducats: " + (ducats / (Mathf.Pow (10, 53))).ToString() + "R";
+		else if (ducats > (Mathf.Pow (10, 50))) ducatDisp.text =  "Ducats: " + (ducats / (Mathf.Pow (10, 50))).ToString() + "Q";
+		else if (ducats > (Mathf.Pow (10, 47))) ducatDisp.text =  "Ducats: " + (ducats / (Mathf.Pow (10, 47))).ToString() + "P";
+		else if (ducats > (Mathf.Pow (10, 44))) ducatDisp.text =  "Ducats: " + (ducats / (Mathf.Pow (10, 44))).ToString() + "O";
+		else if (ducats > (Mathf.Pow (10, 41))) ducatDisp.text =  "Ducats: " + (ducats / (Mathf.Pow (10, 41))).ToString() + "N";
+		else if (ducats > (Mathf.Pow (10, 38))) ducatDisp.text =  "Ducats: " + (ducats / (Mathf.Pow (10, 38))).ToString() + "M";
+		else if (ducats > (Mathf.Pow (10, 35))) ducatDisp.text =  "Ducats: " + (ducats / (Mathf.Pow (10, 35))).ToString() + "L";
+		else if (ducats > (Mathf.Pow (10, 32))) ducatDisp.text =  "Ducats: " + (ducats / (Mathf.Pow (10, 32))).ToString() + "K";
+		else if (ducats > (Mathf.Pow (10, 29))) ducatDisp.text =  "Ducats: " + (ducats / (Mathf.Pow (10, 29))).ToString() + "J";
+		else if (ducats > (Mathf.Pow (10, 26))) ducatDisp.text =  "Ducats: " + (ducats / (Mathf.Pow (10, 26))).ToString() + "I";
+		else if (ducats > (Mathf.Pow (10, 23))) ducatDisp.text =  "Ducats: " + (ducats / (Mathf.Pow (10, 23))).ToString() + "H";
+		else if (ducats > (Mathf.Pow (10, 20))) ducatDisp.text =  "Ducats: " + (ducats / (Mathf.Pow (10, 20))).ToString() + "G";
+		else if (ducats > (Mathf.Pow (10, 17))) ducatDisp.text =  "Ducats: " + (ducats / (Mathf.Pow (10, 17))).ToString() + "F";
+		else if (ducats > (Mathf.Pow (10, 14))) ducatDisp.text =  "Ducats: " + (ducats / (Mathf.Pow (10, 14))).ToString() + "E";
+		else if (ducats > (Mathf.Pow (10, 11))) ducatDisp.text =  "Ducats: " + (ducats / (Mathf.Pow (10, 11))).ToString() + "D";
+		else if (ducats > (Mathf.Pow (10, 9))) ducatDisp.text =  "Ducats: " + (ducats / (Mathf.Pow (10, 9))).ToString() + "C";
+		else if (ducats > (Mathf.Pow (10, 6))) ducatDisp.text =  "Ducats: " + (ducats / (Mathf.Pow (10, 6))).ToString() + "B";
+		else if (ducats > (Mathf.Pow (10, 3))) ducatDisp.text =  "Ducats: " + (ducats / (Mathf.Pow (10, 3))).ToString() + "A";
+=======
+		bossHP = 1000 * (stage / 100 + bossesKilled);
