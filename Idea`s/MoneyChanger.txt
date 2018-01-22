@@ -1,4 +1,3 @@
-	//Not to many numbers for the money	
 		else if (ducats > (Mathf.Pow (10, 92))) ducatDisp.text =  "Ducats: " + (ducats / (Mathf.Pow (10, 92))).ToString() + "AE";
 		else if (ducats > (Mathf.Pow (10, 89))) ducatDisp.text =  "Ducats: " + (ducats / (Mathf.Pow (10, 89))).ToString() + "AD";
 		else if (ducats > (Mathf.Pow (10, 86))) ducatDisp.text =  "Ducats: " + (ducats / (Mathf.Pow (10, 86))).ToString() + "AC";
@@ -30,5 +29,3 @@
 		else if (ducats > (Mathf.Pow (10, 9))) ducatDisp.text =  "Ducats: " + (ducats / (Mathf.Pow (10, 9))).ToString() + "C";
 		else if (ducats > (Mathf.Pow (10, 6))) ducatDisp.text =  "Ducats: " + (ducats / (Mathf.Pow (10, 6))).ToString() + "B";
 		else if (ducats > (Mathf.Pow (10, 3))) ducatDisp.text =  "Ducats: " + (ducats / (Mathf.Pow (10, 3))).ToString() + "A";
-=======
-		bossHP = 1000 * (stage / 100 + bossesKilled);

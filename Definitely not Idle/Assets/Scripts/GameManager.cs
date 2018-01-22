@@ -49,6 +49,7 @@ public class GameManager : MonoBehaviour {
 		healthText.text = "HP: " + Math.Round(enemyHP) + " / " + Math.Round(enemyHPMax);
 		healthbar.value = CalculateHealth ();
 		EnemyInit ();
+		MoneyChange ();
 	}
 
 	public void GiveCash()
@@ -84,6 +85,12 @@ public class GameManager : MonoBehaviour {
 	public float CalculateHealth()
 	{
 		return (float)enemyHP / (float)enemyHPMax;
+	}
+
+	public void MoneyChange()
+	{
+		    if (ducats > (Mathf.Pow (10, 3)))
+			ducatDisp.text =  "Ducats: " + (ducats / (Mathf.Pow (10, 3))).ToString() + "A";
 	}
 
 	public void Exit()
