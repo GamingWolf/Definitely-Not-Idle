@@ -1005,6 +1005,7 @@ MonoBehaviour:
   dpsLvlInt: 1
   heroLvlInt: 1
   tickCostInt: 1000
+  tickLvlint: 0.25
   dpsCostInt: 10
   heroCostInt: 10
 --- !u!4 &676065360

@@ -15,11 +15,10 @@ public class Money : MonoBehaviour {
 		
 	}
 
-	string ReturnNumber(float number)
+	string ReturnNumber(double number)
 	{
-		float aScore = Math.Floor (number / aSize);
-		float bScore = Math.Floor ((number - aScore * aSize) / bSize);
-		float cScore = Math.Floor ((number - bScore * bSize - bScore * bSize) / kSize);
+		double aScore = Math.Floor (number / aSize);
+		double bScore = Math.Floor ((number - aScore * aSize) / bSize);
 
 
 		return scoreString;
