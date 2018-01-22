@@ -22,8 +22,9 @@ public class GameManager : MonoBehaviour {
 					enemyHP = 500,
 					dps = 10, 
 					heroClickDamage = 10, 
-				    enemyHPMax,
-					bossHP = 1000;
+					enemyHPMax,
+					bossHP = 1000,
+					tickRate = 1;
 
 	public bool firstStart = true;
 		

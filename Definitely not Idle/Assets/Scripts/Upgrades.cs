@@ -10,10 +10,11 @@ public class Upgrades : MonoBehaviour {
 
 	public GameManager GM;
 
-	public Text dpsLvl, heroLvl, dpsCost, heroCost;
+	public Text dpsLvl, heroLvl, dpsCost, heroCost,tickLvl, tickCost;
 
 	public double  	dpsLvlInt = 1,
 					heroLvlInt = 1,
+					tickCostInt = 1000,
 					dpsCostInt = 10,
 					heroCostInt = 10;
 
@@ -26,8 +27,10 @@ public class Upgrades : MonoBehaviour {
 	void Update () {
 		dpsLvl.text = "DPS Level: " + dpsLvlInt;
 		heroLvl.text = "Hero Level: " + heroLvlInt;
-		dpsCost.text = "Cost: " + Math.Round((dpsCostInt));
+		tickLvl.text = "Tick Rate: " + GM.tickRate;
+		dpsCost.text = "Cost: " + Math.Round(dpsCostInt);
 		heroCost.text = "Cost: " + Math.Round(heroCostInt);
+		tickCost.text = "Cost: " + Math.Round(tickCostInt);
 	}
 
 	public void UpgradeDPS()
@@ -49,6 +52,15 @@ public class Upgrades : MonoBehaviour {
 			heroLvlInt += 1;
 			GM.heroClickDamage = GM.heroClickDamage + (heroLvlInt * (1.10 + (GM.heroClickDamage / 180)));
 			heroCostInt = heroLvlInt * ((5 + heroLvlInt) * 1.07 * (heroLvlInt * 0.7));
+		}
+	}
+
+	public void UpgradeTick()
+	{
+		if (GM.ducats >= Math.Round (tickCostInt) && GM.tickRate > 0.0001) 
+		{
+			GM.ducats -= Math.Round (tickCostInt);
+			GM.tickRate = Mathf.Pow(4, (float)(-GM.tickRate));
 		}
 	}
 

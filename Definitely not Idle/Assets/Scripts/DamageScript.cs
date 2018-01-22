@@ -9,13 +9,24 @@ public class DamageScript : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		InvokeRepeating("DPS", 1.0f, 0.1f);
+		StartCoroutine(DPS()) ;
 	}
 
-	public void DPS()
+	IEnumerator DPS()
+	{
+		yield return null;
+
+		do 
+		{
+			GM.enemyHP -= Math.Round (GM.dps);
+			yield return new WaitForSeconds((float)GM.tickRate);
+		} while(true);
+	}
+
+	/*public void DPSv()
 	{
 		GM.enemyHP -= Math.Round(GM.dps);
-	}
+	}*/
 
 	// Update is called once per frame
 	void Update () {
