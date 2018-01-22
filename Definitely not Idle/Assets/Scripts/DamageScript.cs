@@ -19,6 +19,7 @@ public class DamageScript : MonoBehaviour {
 		do 
 		{
 			GM.enemyHP -= Math.Round (GM.dps);
+			GM.a++;
 			yield return new WaitForSeconds((float)GM.tickRate);
 		} while(true);
 	}

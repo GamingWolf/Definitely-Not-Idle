@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour {
 
-	public Text ducatDisp, stageDisp, dpsDisp, healthText, killedEnemies, clickDamageDisp;
+	public Text ducatDisp, stageDisp, dpsDisp, healthText, killedEnemies, clickDamageDisp, test;
 
 	public Slider healthbar;
 
@@ -25,6 +25,8 @@ public class GameManager : MonoBehaviour {
 					enemyHPMax,
 					bossHP = 1000,
 					tickRate = 1;
+
+	public char a = 'a';
 
 	public bool firstStart = true;
 		
@@ -47,9 +49,9 @@ public class GameManager : MonoBehaviour {
 		dpsDisp.text = "Idle DPS: " + Math.Round(dps);
 		clickDamageDisp.text = "Hero Damage: " + Math.Round(heroClickDamage);
 		healthText.text = "HP: " + Math.Round(enemyHP) + " / " + Math.Round(enemyHPMax);
+		test.text = a.ToString();
 		healthbar.value = CalculateHealth ();
 		EnemyInit ();
-		MoneyChange ();
 	}
 
 	public void GiveCash()
@@ -85,12 +87,6 @@ public class GameManager : MonoBehaviour {
 	public float CalculateHealth()
 	{
 		return (float)enemyHP / (float)enemyHPMax;
-	}
-
-	public void MoneyChange()
-	{
-		    if (ducats > (Mathf.Pow (10, 3)))
-			ducatDisp.text =  "Ducats: " + (ducats / (Mathf.Pow (10, 3))).ToString() + "A";
 	}
 
 	public void Exit()

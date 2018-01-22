@@ -5,22 +5,21 @@ using System;
 
 public class Money : MonoBehaviour {
 
-	private string scoreString ;
-	private int cSize = 100000 ;
+	private string ducatString;
 	private int bSize = 1000 ;
 	private int aSize = 1 ;
 
-	// Use this for initialization
-	void Start () {
-		
-	}
 
-	string ReturnNumber(double number)
+	string MoneyScale(double number)
 	{
 		double aScore = Math.Floor (number / aSize);
 		double bScore = Math.Floor ((number - aScore * aSize) / bSize);
 
+		return ducatString;
+	}
 
-		return scoreString;
+	private void SuffixScale(string s)
+	{
+		
 	}
 }
