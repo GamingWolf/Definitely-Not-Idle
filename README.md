@@ -10,4 +10,4 @@ Alternatively you can clone the repo and build it yourself.
 You can expect a workable Alpha around christmas.
 
 # Android
-Now working on Android
+Now working on an Android version
