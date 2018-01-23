@@ -3,6 +3,8 @@ Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2010
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Definitely not Idle", "Assembly-CSharp.csproj", "{EAB49FFC-D1A7-8461-4559-B7602A952823}"
 EndProject
+Project("{B7A947C0-A1AB-30A4-6211-D86A2E84AABC}") = "Definitely not Idle", "Assembly-UnityScript.unityproj", "{CF09D655-DAC2-273D-496C-5D533710A0DD}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -13,6 +15,10 @@ Global
 		{EAB49FFC-D1A7-8461-4559-B7602A952823}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EAB49FFC-D1A7-8461-4559-B7602A952823}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EAB49FFC-D1A7-8461-4559-B7602A952823}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CF09D655-DAC2-273D-496C-5D533710A0DD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CF09D655-DAC2-273D-496C-5D533710A0DD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CF09D655-DAC2-273D-496C-5D533710A0DD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CF09D655-DAC2-273D-496C-5D533710A0DD}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
