@@ -89,6 +89,12 @@ public class GameManager : MonoBehaviour {
 		return (float)enemyHP / (float)enemyHPMax;
 	}
 
+	public string ValueScaler(double number)
+	{
+		string result = null;
+		return result;
+	}
+
 	public void Exit()
 	{
 		Application.Quit ();
