@@ -49,7 +49,7 @@ public class GameManager : MonoBehaviour {
 		dpsDisp.text = "Idle DPS: " + Math.Round(dps);
 		clickDamageDisp.text = "Hero Damage: " + Math.Round(heroClickDamage);
 		healthText.text = "HP: " + Math.Round(enemyHP) + " / " + Math.Round(enemyHPMax);
-		test.text = a.ToString();
+
 		healthbar.value = CalculateHealth ();
 		EnemyInit ();
 	}
