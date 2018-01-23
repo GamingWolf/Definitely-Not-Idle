@@ -44,7 +44,7 @@ public class GameManager : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		ducatDisp.text = "Ducats: " + ducats;
+		ducatDisp.text = "Ducats: " + ducats.ToString("0.00E+0");
 		stageDisp.text = "Stage: " + stage;
 		dpsDisp.text = "Idle DPS: " + Math.Round(dps);
 		clickDamageDisp.text = "Hero Damage: " + Math.Round(heroClickDamage);
@@ -63,8 +63,8 @@ public class GameManager : MonoBehaviour {
 	{
 		if (enemyHP <= 0 && stagesUntilBoss > 0) {
 			stage += 1;
-			enemyHP = Math.Round(100 * (1 + ((stage - 1) * (stage - 1)) * 0.015));
-			enemyHPMax = enemyHP;
+			enemyHP = (Math.Round(100 * (1 + ((stage - 1) * (stage - 1)) * 0.015))).ToString("0.00E+0");
+			enemyHPMax = enemyHP.;
 			GiveCash ();
 			stagesUntilBoss -= 1;
 			killedEn += 1;
@@ -87,12 +87,6 @@ public class GameManager : MonoBehaviour {
 	public float CalculateHealth()
 	{
 		return (float)enemyHP / (float)enemyHPMax;
-	}
-
-	public string ValueScaler(double number)
-	{
-		string result = null;
-		return result;
 	}
 
 	public void Exit()
