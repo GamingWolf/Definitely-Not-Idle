@@ -63,8 +63,8 @@ public class GameManager : MonoBehaviour {
 	{
 		if (enemyHP <= 0 && stagesUntilBoss > 0) {
 			stage += 1;
-			enemyHP = (Math.Round(100 * (1 + ((stage - 1) * (stage - 1)) * 0.015))).ToString("0.00E+0");
-			enemyHPMax = enemyHP.;
+			enemyHP = Math.Round(100 * (1 + ((stage - 1) * (stage - 1)) * 0.015));
+			enemyHPMax = enemyHP;
 			GiveCash ();
 			stagesUntilBoss -= 1;
 			killedEn += 1;
