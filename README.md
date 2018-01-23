@@ -8,3 +8,6 @@ Alternatively you can clone the repo and build it yourself.
 
 # WIP
 You can expect a workable Alpha around christmas.
+
+#Android
+Now working on Android
