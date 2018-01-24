@@ -12,6 +12,8 @@ public class GameManager : MonoBehaviour {
 
 	public GameObject UpgradePanel;
 
+	public SaveData SD;
+
 	public int  stage = 1, 
 				bossTimer = 30, 
 				bossesKilled = 0, 
@@ -40,6 +42,7 @@ public class GameManager : MonoBehaviour {
 			firstStart = false;
 		}
 		Application.runInBackground = true;
+		SD.Load();
 	}
 	
 	// Update is called once per frame
@@ -87,9 +90,15 @@ public class GameManager : MonoBehaviour {
 	{
 		return (float)enemyHP / (float)enemyHPMax;
 	}
-
+		
 	public void Exit()
 	{
 		Application.Quit ();
 	}
+
+	void OnApplicationQuit(){
+		SD.Save();
+	}
+
+		
 }
