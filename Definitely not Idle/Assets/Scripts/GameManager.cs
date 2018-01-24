@@ -46,9 +46,9 @@ public class GameManager : MonoBehaviour {
 	void Update () {
 		ducatDisp.text = "Ducats: " + ducats.ToString("0.00E+0");
 		stageDisp.text = "Stage: " + stage;
-		dpsDisp.text = "Idle DPS: " + Math.Round(dps);
-		clickDamageDisp.text = "Hero Damage: " + Math.Round(heroClickDamage);
-		healthText.text = "HP: " + Math.Round(enemyHP) + " / " + Math.Round(enemyHPMax);
+		dpsDisp.text = "Idle DPS: " + Math.Round(dps).ToString("0.00E+0");;
+		clickDamageDisp.text = "Hero Damage: " + Math.Round(heroClickDamage).ToString("0.00E+0");;
+		healthText.text = "HP: " + Math.Round(enemyHP).ToString("0.00E+0") + " / " + Math.Round(enemyHPMax).ToString("0.00E+0");
 		test.text = a.ToString();
 		healthbar.value = CalculateHealth ();
 		EnemyInit ();
