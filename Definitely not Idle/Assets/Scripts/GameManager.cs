@@ -3,6 +3,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using System.Xml;
+using System.Xml.Serialization;
 
 public class GameManager : MonoBehaviour {
 
@@ -10,9 +12,7 @@ public class GameManager : MonoBehaviour {
 
 	public Slider healthbar;
 
-	public GameObject UpgradePanel;
-
-	public SaveData SD;
+	public GameObject UpgradePanel, UM;
 
 	public int  stage = 1, 
 				bossTimer = 30, 
@@ -28,21 +28,18 @@ public class GameManager : MonoBehaviour {
 					bossHP = 1000,
 					tickRate = 1;
 
-	public char a = 'a';
-
-	public bool firstStart = true;
+	public int firstStart = 1;
 		
 	// Use this for initialization
 	void Start () {
-		if (firstStart) 
-		{
-			enemyHP = 100 * ( 1 + (( stage - 1 ) * ( stage - 1 ))  * 0.015 );
-			enemyHPMax = enemyHP;
-			UpgradePanel.SetActive (false);
-			firstStart = false;
-		}
+		UpgradePanel.SetActive (false);
 		Application.runInBackground = true;
-		SD.Load();
+		if (firstStart == 1)
+		{
+			enemyHP = 100 * (1 + ((stage - 1) * (stage - 1)) * 0.015);
+			enemyHPMax = enemyHP;
+			firstStart = 0;
+		}
 	}
 	
 	// Update is called once per frame
@@ -58,7 +55,7 @@ public class GameManager : MonoBehaviour {
 
 	public void GiveCash()
 	{
-		ducats += Mathf.Round((float)(enemyHP * 0.1));
+		ducats += Math.Round(enemyHP * 0.1);
 	}
 
 	public void EnemyInit()
@@ -96,9 +93,42 @@ public class GameManager : MonoBehaviour {
 		Application.Quit ();
 	}
 
-	void OnApplicationQuit(){
-		SD.Save();
+	public void Save()
+	{
+		SnL.SavePlayer(this, UM);
 	}
 
-		
+	public void Load()
+	{
+		double[] loadedStats = SnL.LoadPlayer();
+
+		//gm double data
+		ducats = loadedStats[0];
+		enemyHP = loadedStats[1];
+		dps = loadedStats[2];
+		heroClickDamage = loadedStats[3];
+		enemyHPMax = loadedStats[4];
+		bossHP = loadedStats[5];
+		tickRate = loadedStats[6];
+
+		//gm int data
+		stage = (int)loadedStats[7];
+		bossTimer = (int)loadedStats[8];
+		bossesKilled = (int)loadedStats[9];
+		stagesUntilBoss = (int)loadedStats[10];
+		killedEn = (int)loadedStats[11];
+
+		//upgrade data
+		UM.GetComponent<Upgrades>().dpsLvlInt = loadedStats[12];
+		UM.GetComponent<Upgrades>().heroLvlInt = loadedStats[13];
+		UM.GetComponent<Upgrades>().tickCostInt = loadedStats[14];
+		UM.GetComponent<Upgrades>().tickLvlint = loadedStats[15];
+		UM.GetComponent<Upgrades>().dpsCostInt = loadedStats[16];
+		UM.GetComponent<Upgrades>().heroCostInt = loadedStats[17];
+	}
+
+	void OnApplicationQuit()
+	{
+	}
+			
 }

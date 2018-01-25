@@ -29,9 +29,9 @@ public class Upgrades : MonoBehaviour {
 		dpsLvl.text = "DPS Level: " + dpsLvlInt;
 		heroLvl.text = "Hero Level: " + heroLvlInt;
 		tickLvl.text = "Tick Rate: " + GM.tickRate;
-		dpsCost.text = "Cost: " + Math.Round(dpsCostInt).ToString("0.00E+0");;
-		heroCost.text = "Cost: " + Math.Round(heroCostInt).ToString("0.00E+0");;
-		tickCost.text = "Cost: " + Math.Round(tickCostInt).ToString("0.00E+0");;
+		dpsCost.text = "Cost: " + Math.Round(dpsCostInt).ToString("0.00E+0");
+		heroCost.text = "Cost: " + Math.Round(heroCostInt).ToString("0.00E+0");
+		tickCost.text = "Cost: " + Math.Round(tickCostInt).ToString("0.00E+0");
 	}
 
 	public void UpgradeDPS()
