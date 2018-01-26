@@ -5,14 +5,17 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[Serializable]
 public static class SnL
 {
+	
+
 
 	public static void SavePlayer(GameManager GM, GameObject UM)
 	{
 		BinaryFormatter bf = new BinaryFormatter();
 
-		FileStream stream = new FileStream(Application.persistentDataPath + "/playeri.DNI", FileMode.Create);
+		FileStream stream = new FileStream(Application.persistentDataPath + "/DefNoSave.NoSav", FileMode.Create);
 
 		PlayerData data = new PlayerData(GM, UM);
 
@@ -22,11 +25,11 @@ public static class SnL
 
 	public static double[] LoadPlayer()
 	{
-		if (File.Exists(Application.persistentDataPath + "/playeri.DNI"))
+		if (File.Exists(Application.persistentDataPath + "/DefNoSave.NoSav"))
 		{
 			BinaryFormatter bf = new BinaryFormatter();
 
-			FileStream stream = new FileStream(Application.persistentDataPath + "/playeri.DNI", FileMode.Open);
+			FileStream stream = new FileStream(Application.persistentDataPath + "/DefNoSave.NoSav", FileMode.Open);
 
 			PlayerData data = bf.Deserialize(stream) as PlayerData;
 

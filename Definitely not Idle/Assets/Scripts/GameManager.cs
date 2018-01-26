@@ -1,7 +1,9 @@
 ﻿using System;
+using System.IO;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEditor;
 using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour {
@@ -31,6 +33,10 @@ public class GameManager : MonoBehaviour {
 		
 	// Use this for initialization
 	void Start () {
+		if (File.Exists(Application.persistentDataPath + "/DefNoSave.NoSav")) 
+		{
+			Load(); 
+		}
 		UpgradePanel.SetActive (false);
 		Application.runInBackground = true;
 		if (firstStart == 1)
@@ -126,8 +132,17 @@ public class GameManager : MonoBehaviour {
 		UM.GetComponent<Upgrades>().heroCostInt = loadedStats[17];
 	}
 
+	public static void DeleteSave()
+	{
+		if (File.Exists(Application.persistentDataPath + "/DefNoSave.NoSav"))
+		{
+			//File.Delete(Application.persistentDataPath + "/DefNoSave.NoSav");
+			FileUtil.DeleteFileOrDirectory(Application.persistentDataPath + "/DefNoSave.NoSav");
+		}
+	}
 	void OnApplicationQuit()
 	{
+		Save();
 	}
 			
 }
