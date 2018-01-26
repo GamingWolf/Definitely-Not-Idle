@@ -29,22 +29,20 @@ public class GameManager : MonoBehaviour {
 					bossHP = 1000,
 					tickRate = 1;
 
-	public int firstStart = 1;
 		
 	// Use this for initialization
 	void Start () {
-		if (File.Exists(Application.persistentDataPath + "/DefNoSave.NoSav")) 
+		if (File.Exists(Application.persistentDataPath + "/DefNoSave.NoSav"))
 		{
-			Load(); 
+			Load();
 		}
-		UpgradePanel.SetActive (false);
-		Application.runInBackground = true;
-		if (firstStart == 1)
+		else
 		{
 			enemyHP = 100 * (1 + ((stage - 1) * (stage - 1)) * 0.015);
 			enemyHPMax = enemyHP;
-			firstStart = 0;
 		}
+		UpgradePanel.SetActive (false);
+		Application.runInBackground = true;
 	}
 	
 	// Update is called once per frame
@@ -54,8 +52,16 @@ public class GameManager : MonoBehaviour {
 		dpsDisp.text = "Idle DPS: " + Math.Round(dps).ToString("0.00E+0");;
 		clickDamageDisp.text = "Hero Damage: " + Math.Round(heroClickDamage).ToString("0.00E+0");;
 		healthText.text = "HP: " + Math.Round(enemyHP).ToString("0.00E+0") + " / " + Math.Round(enemyHPMax).ToString("0.00E+0");
+		killedEnemies.text = "Enemies killed: " + killedEn;
 		healthbar.value = CalculateHealth ();
 		EnemyInit ();
+
+		UM.GetComponent<Upgrades>().dpsLvl.text = "DPS Level: " + UM.GetComponent<Upgrades>().dpsLvlInt;
+		UM.GetComponent<Upgrades>().heroLvl.text = "Hero Level: " + UM.GetComponent<Upgrades>().heroLvlInt;
+		UM.GetComponent<Upgrades>().tickLvl.text = "Tick Rate: " + tickRate;
+		UM.GetComponent<Upgrades>().dpsCost.text = "Cost: " + Math.Round(UM.GetComponent<Upgrades>().dpsCostInt).ToString("0.00E+0");
+		UM.GetComponent<Upgrades>().heroCost.text = "Cost: " + Math.Round(UM.GetComponent<Upgrades>().heroCostInt).ToString("0.00E+0");
+		UM.GetComponent<Upgrades>().tickCost.text = "Cost: " + Math.Round(UM.GetComponent<Upgrades>().tickCostInt).ToString("0.00E+0");
 	}
 
 	public void GiveCash()
@@ -72,7 +78,6 @@ public class GameManager : MonoBehaviour {
 			GiveCash ();
 			stagesUntilBoss -= 1;
 			killedEn += 1;
-			killedEnemies.text = "Enemies killed: " + killedEn;
 		} 
 		else if (stagesUntilBoss <= 0 && enemyHP <= 0) 
 		{
@@ -132,12 +137,12 @@ public class GameManager : MonoBehaviour {
 		UM.GetComponent<Upgrades>().heroCostInt = loadedStats[17];
 	}
 
-	public static void DeleteSave()
+	public static void NewGame()
 	{
 		if (File.Exists(Application.persistentDataPath + "/DefNoSave.NoSav"))
 		{
-			//File.Delete(Application.persistentDataPath + "/DefNoSave.NoSav");
-			FileUtil.DeleteFileOrDirectory(Application.persistentDataPath + "/DefNoSave.NoSav");
+			File.Delete(Application.persistentDataPath + "/DefNoSave.NoSav");
+			//FileUtil.DeleteFileOrDirectory(Application.persistentDataPath + "/DefNoSave.NoSav");
 		}
 	}
 	void OnApplicationQuit()
