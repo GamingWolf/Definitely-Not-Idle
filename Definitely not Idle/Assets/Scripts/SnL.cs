@@ -12,7 +12,7 @@ public static class SnL
 	{
 		BinaryFormatter bf = new BinaryFormatter();
 
-		FileStream stream = new FileStream(Application.persistentDataPath + "/player.DNI", FileMode.Create);
+		FileStream stream = new FileStream(Application.persistentDataPath + "/playeri.DNI", FileMode.Create);
 
 		PlayerData data = new PlayerData(GM, UM);
 
@@ -22,11 +22,11 @@ public static class SnL
 
 	public static double[] LoadPlayer()
 	{
-		if (File.Exists(Application.persistentDataPath + "/player.DNI"))
+		if (File.Exists(Application.persistentDataPath + "/playeri.DNI"))
 		{
 			BinaryFormatter bf = new BinaryFormatter();
 
-			FileStream stream = new FileStream(Application.persistentDataPath + "/player.DNI", FileMode.Open);
+			FileStream stream = new FileStream(Application.persistentDataPath + "/playeri.DNI", FileMode.Open);
 
 			PlayerData data = bf.Deserialize(stream) as PlayerData;
 

@@ -1,6 +1,0 @@
-THE FOLLOWING IS REQUIRED TO RUN THE GAME
-
-1. UnityPlayer.dll
-2. DNI-v0.0.1-FIRST_BUILD.exe
-3. DNI-v0.0.1-FIRST_BUILD_Data (folder)
-
