@@ -42,6 +42,7 @@ public class GameManager : MonoBehaviour {
 		}
 		UpgradePanel.SetActive (false);
 		Application.runInBackground = true;
+		Screen.autorotateToPortrait = true;
 	}
 	
 	// Update is called once per frame
@@ -49,7 +50,7 @@ public class GameManager : MonoBehaviour {
 		ducatDisp.text = "Ducats: " + ducats.ToString("0.00E+0");
 		stageDisp.text = "Stage: " + stage;
 		dpsDisp.text = "DPS: " + Math.Round(dps).ToString("0.00E+0");;
-		clickDamageDisp.text = "HD: " + Math.Round(heroClickDamage).ToString("0.00E+0");;
+		clickDamageDisp.text = "Hero Damage: " + Math.Round(heroClickDamage).ToString("0.00E+0");;
 		healthText.text = "HP: " + Math.Round(enemyHP).ToString("0.00E+0") + " / " + Math.Round(enemyHPMax).ToString("0.00E+0");
 		killedEnemies.text = "Enemies killed: " + killedEn;
 		healthbar.value = CalculateHealth ();
