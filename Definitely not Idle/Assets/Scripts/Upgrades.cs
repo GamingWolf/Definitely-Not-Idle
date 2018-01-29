@@ -7,7 +7,7 @@ using UnityEngine.UI;
 public class Upgrades : MonoBehaviour
 {
 
-	public GameObject UpgradePanel;
+	public GameObject UpgradePanel, ButtonPanel;
 
 	public GameManager GM;
 
