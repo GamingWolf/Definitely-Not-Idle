@@ -17,8 +17,8 @@ public class Upgrades : MonoBehaviour
 					heroLvlInt = 1,
 					tickCostInt = 1000,
 					tickLvlint = 0.25,
-					dpsCostInt = 10,
-					heroCostInt = 10;
+					dpsCostInt = 100,
+					heroCostInt = 100;
 
 	public void UpgradeDPS()
 	{
