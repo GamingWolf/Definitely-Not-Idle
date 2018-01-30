@@ -27,7 +27,7 @@ public class Upgrades : MonoBehaviour
 			GM.ducats -= Math.Round(dpsCostInt);
 			dpsLvlInt += 1;
 			GM.dps = GM.dps + (dpsLvlInt * (1.07 + (GM.dps / 100)));
-			dpsCostInt = dpsLvlInt * ((5 + dpsLvlInt) * 1.07 * (dpsLvlInt * 0.7));
+			dpsCostInt = Math.Pow(1.1, dpsLvlInt + 100);
 		}
 	}
 
@@ -38,7 +38,7 @@ public class Upgrades : MonoBehaviour
 			GM.ducats -= Math.Round(heroCostInt);
 			heroLvlInt += 1;
 			GM.heroClickDamage = GM.heroClickDamage + (heroLvlInt * (1.10 + (GM.heroClickDamage / 180)));
-			heroCostInt = heroLvlInt * ((5 + heroLvlInt) * 1.07 * (heroLvlInt * 0.7));
+			heroCostInt = Math.Pow(1.1, dpsLvlInt + 100);
 		}
 	}
 
