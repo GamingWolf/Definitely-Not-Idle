@@ -370,9 +370,9 @@ MonoBehaviour:
   m_PersistentViewDataDictionary: {fileID: 0}
   m_TreeViewState:
     scrollPos: {x: 0, y: 0}
-    m_SelectedIDs: a4280000
-    m_LastClickedID: 10404
-    m_ExpandedIDs: 9efbffff000000002a280000
+    m_SelectedIDs: 8c280000
+    m_LastClickedID: 10380
+    m_ExpandedIDs: 9efbffff00000000102800002a280000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -649,7 +649,7 @@ MonoBehaviour:
   m_ListAreaState:
     m_SelectedInstanceIDs: 
     m_LastClickedInstanceID: 0
-    m_HadKeyboardFocusLastEvent: 1
+    m_HadKeyboardFocusLastEvent: 0
     m_ExpandedInstanceIDs: c62300007a2800007e28000010320000e8270000802900004c2900005e2900004029000070290000
     m_RenameOverlay:
       m_UserAcceptedRename: 0

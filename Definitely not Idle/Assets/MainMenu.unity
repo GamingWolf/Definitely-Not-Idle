@@ -1352,6 +1352,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   UpgradePanel: {fileID: 562594005}
+  SettingsPanel: {fileID: 725538023}
   GM: {fileID: 1915534799}
   dpsLvl: {fileID: 850476516}
   heroLvl: {fileID: 911766807}
@@ -3281,7 +3282,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1915534799}
-        m_MethodName: Save
+        m_MethodName: ShowHideSettings
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -3787,6 +3788,7 @@ MonoBehaviour:
   healthbar: {fileID: 849855268}
   UpgradePanel: {fileID: 562594005}
   UM: {fileID: 676065358}
+  SettingsPanel: {fileID: 725538023}
   stage: 1
   bossTimer: 30
   bossesKilled: 0
@@ -3798,7 +3800,7 @@ MonoBehaviour:
   heroClickDamage: 3.5
   enemyHPMax: 0
   bossHP: 1000
-  tickRate: 1
+  tickRate: 2
 --- !u!4 &1915534800
 Transform:
   m_ObjectHideFlags: 0

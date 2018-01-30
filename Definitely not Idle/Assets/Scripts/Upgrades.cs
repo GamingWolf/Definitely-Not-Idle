@@ -7,7 +7,7 @@ using UnityEngine.UI;
 public class Upgrades : MonoBehaviour
 {
 
-	public GameObject UpgradePanel;
+	public GameObject UpgradePanel, SettingsPanel;
 
 	public GameManager GM;
 
@@ -56,13 +56,14 @@ public class Upgrades : MonoBehaviour
 
 	public void ShowHideUpgrades()
 	{
-		if (UpgradePanel.activeSelf == true)
+		if (UpgradePanel.activeSelf)
 		{
 			UpgradePanel.SetActive(false);
 		}
 		else
 		{
 			UpgradePanel.SetActive(true);
+			SettingsPanel.SetActive(false);
 		}
 	}
 }

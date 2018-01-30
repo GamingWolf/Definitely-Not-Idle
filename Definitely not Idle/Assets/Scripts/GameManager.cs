@@ -12,7 +12,7 @@ public class GameManager : MonoBehaviour {
 
 	public Slider healthbar;
 
-	public GameObject UpgradePanel, UM;
+	public GameObject UpgradePanel, UM, SettingsPanel;
 
 	public int  stage = 1, 
 				bossTimer = 30, 
@@ -26,7 +26,7 @@ public class GameManager : MonoBehaviour {
 					heroClickDamage = 3.5, 
 					enemyHPMax,
 					bossHP = 1000,
-					tickRate = 1;
+					tickRate = 2;
 
 		
 	// Use this for initialization
@@ -42,6 +42,7 @@ public class GameManager : MonoBehaviour {
 			enemyHPMax = enemyHP;
 		}
 		UpgradePanel.SetActive (false);
+		SettingsPanel.SetActive(false);
 		Application.runInBackground = true;
 	}
 	
@@ -146,7 +147,7 @@ public class GameManager : MonoBehaviour {
 		dps = 2.5;
 		heroClickDamage = 3.5;
 		bossHP = 1000;
-		tickRate = 1;
+		tickRate = 2;
 		stage = 1;
 		bossTimer = 30;
 		bossesKilled = 0;
@@ -163,6 +164,20 @@ public class GameManager : MonoBehaviour {
 		enemyHP = Math.Pow(1.07, stage + 38);
 		enemyHPMax = enemyHP;
 	}
+
+	public void ShowHideSettings()
+	{
+		if (SettingsPanel.activeSelf)
+		{
+			SettingsPanel.SetActive(false);
+		}
+		else
+		{
+			SettingsPanel.SetActive(true);
+			UpgradePanel.SetActive(false);
+		}
+	}
+
 	void OnApplicationQuit()
 	{
 		Save();
