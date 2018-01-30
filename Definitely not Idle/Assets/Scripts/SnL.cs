@@ -35,11 +35,9 @@ public static class SnL
 
 			stream.Close();
 
-			Debug.Log(Application.persistentDataPath);
 			return data.stats;
 		}
 		else {
-			Debug.Log("Is broke");
 			return new double[18];
 		}
 	}

@@ -22,7 +22,7 @@ public class GameManager : MonoBehaviour {
 
 	public double   ducats = 0, 
 					enemyHP = 500,
-					dps = 10, 
+					dps = 5, 
 					heroClickDamage = 10, 
 					enemyHPMax,
 					bossHP = 1000,
@@ -37,7 +37,8 @@ public class GameManager : MonoBehaviour {
 		}
 		else
 		{
-			enemyHP = 100 * (1 + ((stage - 1) * (stage - 1)) * 0.015);
+			//1.035^(x-5)
+			enemyHP = Math.Pow(1.17, stage + 20);
 			enemyHPMax = enemyHP;
 		}
 		UpgradePanel.SetActive (false);
@@ -70,10 +71,12 @@ public class GameManager : MonoBehaviour {
 
 	public void EnemyInit()
 	{
+		//1.035^(x-5)
 		if (enemyHP <= 0 && stagesUntilBoss > 0) {
 			stage += 1;
-			enemyHP = Math.Round(100 * (1 + ((stage - 1) * (stage - 1)) * 0.015));
+			enemyHP = Math.Pow(1.17, stage + 20);
 			enemyHPMax = enemyHP;
+			Debug.Log(enemyHP);
 			GiveCash ();
 			stagesUntilBoss -= 1;
 			killedEn += 1;
