@@ -10,6 +10,8 @@ public class GameManager : MonoBehaviour {
 
 	public Text ducatDisp, stageDisp, dpsDisp, healthText, killedEnemies, clickDamageDisp;
 
+	public Text[] bossText;
+
 	public Slider healthbar;
 
 	public GameObject UpgradePanel, UM, SettingsPanel, Sivir, Mercy, Ahri, BossWrapper;
@@ -42,6 +44,7 @@ public class GameManager : MonoBehaviour {
 			enemyHP = Math.Pow(1.07, stage + 38);
 			enemyHPMax = enemyHP;
 		}
+		bossText = BossWrapper.GetComponentsInChildren<Text>();
 		BossWrapper.SetActive (false);
 		UpgradePanel.SetActive (false);
 		SettingsPanel.SetActive(false);
@@ -101,6 +104,7 @@ public class GameManager : MonoBehaviour {
 			GiveCash ();
 			stagesUntilBoss -= 1;
 			killedEn += 1;
+			BossWrapper.SetActive (false);
 			bossTimer = 30;
 		} 
 		else if (stagesUntilBoss <= 0 && enemyHP <= 0) 
@@ -119,6 +123,9 @@ public class GameManager : MonoBehaviour {
 
 		BossWrapper.SetActive (true);
 
+		bossText[0].text = "Boss!";
+		bossText[1].text = bossTimer + "s";
+
 		StartCoroutine(BossTimer());
 	}
 
@@ -126,18 +133,20 @@ public class GameManager : MonoBehaviour {
 	{
 		do {
 			bossTimer--;
+			bossText[1].text = bossTimer + "s";
 			if(bossTimer <= 0)
 			{
 				if(bossHP > 0)
 				{
 					stage -= 10;
+					EnemyInit();
 				}
 				else
 				{
 					StopCoroutine(BossTimer());
 				}
 			}	
-			yield return new WaitForSeconds ((float)bossTimer);
+			yield return new WaitForSeconds (2);
 		} while(true);
 	}
 
@@ -209,6 +218,9 @@ public class GameManager : MonoBehaviour {
 
 		enemyHP = Math.Pow(1.07, stage + 38);
 		enemyHPMax = enemyHP;
+
+		BossWrapper.SetActive (false);
+		SettingsPanel.SetActive(false);
 	}
 
 	public void ShowHideSettings()
