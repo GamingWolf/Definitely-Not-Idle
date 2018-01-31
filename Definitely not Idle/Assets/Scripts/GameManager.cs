@@ -12,22 +12,23 @@ public class GameManager : MonoBehaviour {
 
 	public Slider healthbar;
 
-	public GameObject UpgradePanel, UM, SettingsPanel;
+	public GameObject UpgradePanel, UM, SettingsPanel, Sivir, Mercy, Ahri, BossWrapper;
 
 	public int  stage = 1, 
 				bossTimer = 30, 
 				bossesKilled = 0, 
-				stagesUntilBoss = 100,
+				stagesUntilBoss = 99,
 				killedEn = 0;
 
 	public double   ducats = 0, 
 					enemyHP = 500,
-					dps = 2.5, 
-					heroClickDamage = 3.5, 
+					dps = 3.5, 
+					heroClickDamage = 4.5, 
 					enemyHPMax,
 					bossHP = 1000,
 					tickRate = 2;
 
+	public bool done = false;
 		
 	// Use this for initialization
 	void Start () {
@@ -41,18 +42,23 @@ public class GameManager : MonoBehaviour {
 			enemyHP = Math.Pow(1.07, stage + 38);
 			enemyHPMax = enemyHP;
 		}
+		BossWrapper.SetActive (false);
 		UpgradePanel.SetActive (false);
 		SettingsPanel.SetActive(false);
 		Application.runInBackground = true;
+		Sivir.SetActive (false);
+		Mercy.SetActive (false);
+		Ahri.SetActive (false);
+
 	}
 	
 	// Update is called once per frame
 	void Update () {
 		ducatDisp.text = "Ducats: " + ducats.ToString("0.00E+0");
 		stageDisp.text = "Stage: " + stage;
-		dpsDisp.text = "Idle DPS: " + Math.Round(dps).ToString("0.00E+0");;
-		clickDamageDisp.text = "Hero Damage: " + Math.Round(heroClickDamage).ToString("0.00E+0");;
-		healthText.text = "HP: " + Math.Round(enemyHP).ToString("0.00E+0") + " / " + Math.Round(enemyHPMax).ToString("0.00E+0");
+		dpsDisp.text = "Idle DPS: " + dps.ToString("0.00E+0");;
+		clickDamageDisp.text = "Hero Damage: " + heroClickDamage.ToString("0.00E+0");;
+		healthText.text = "HP: " + enemyHP.ToString("0.00E+0") + " / " + enemyHPMax.ToString("0.00E+0");
 		killedEnemies.text = "Enemies killed: " + killedEn;
 		healthbar.value = CalculateHealth ();
 		EnemyInit ();
@@ -63,11 +69,25 @@ public class GameManager : MonoBehaviour {
 		UM.GetComponent<Upgrades>().dpsCost.text = "Cost: " + Math.Round(UM.GetComponent<Upgrades>().dpsCostInt).ToString("0.00E+0");
 		UM.GetComponent<Upgrades>().heroCost.text = "Cost: " + Math.Round(UM.GetComponent<Upgrades>().heroCostInt).ToString("0.00E+0");
 		UM.GetComponent<Upgrades>().tickCost.text = "Cost: " + Math.Round(UM.GetComponent<Upgrades>().tickCostInt).ToString("0.00E+0");
+
+		MoreHeros ();
+
+		if (stage == 50 && !done) {
+			ducats += 50000;
+			done = true;
+		}
 	}
 
 	public void GiveCash()
 	{
-		ducats += Math.Round(enemyHP * 0.1);
+		if (stage < 105) 
+		{	
+			ducats += Math.Round (enemyHP * 10);
+		} 
+		else 
+		{
+			ducats += Math.Round (enemyHP * 0.1);
+		}
 	}
 
 	public void EnemyInit()
@@ -81,6 +101,7 @@ public class GameManager : MonoBehaviour {
 			GiveCash ();
 			stagesUntilBoss -= 1;
 			killedEn += 1;
+			bossTimer = 30;
 		} 
 		else if (stagesUntilBoss <= 0 && enemyHP <= 0) 
 		{
@@ -93,7 +114,31 @@ public class GameManager : MonoBehaviour {
 		bossHP = Math.Round(1000 * ( 1 + (( stage + bossesKilled ) * ( stage + bossesKilled ))  * 0.015 ));
 		enemyHPMax = bossHP;
 		enemyHP = bossHP;
-		stagesUntilBoss = 100;
+		bossesKilled++;
+		stagesUntilBoss = 99;
+
+		BossWrapper.SetActive (true);
+
+		StartCoroutine(BossTimer());
+	}
+
+	IEnumerator BossTimer()
+	{
+		do {
+			bossTimer--;
+			if(bossTimer <= 0)
+			{
+				if(bossHP > 0)
+				{
+					stage -= 10;
+				}
+				else
+				{
+					StopCoroutine(BossTimer());
+				}
+			}	
+			yield return new WaitForSeconds ((float)bossTimer);
+		} while(true);
 	}
 
 	public float CalculateHealth()
@@ -144,15 +189,16 @@ public class GameManager : MonoBehaviour {
 	{
 		ducats = 0;
 		enemyHP = 500;
-		dps = 2.5;
-		heroClickDamage = 3.5;
+		dps = 3.5;
+		heroClickDamage = 4.5;
 		bossHP = 1000;
 		tickRate = 2;
 		stage = 1;
 		bossTimer = 30;
 		bossesKilled = 0;
-		stagesUntilBoss = 100;
+		stagesUntilBoss = 99;
 		killedEn = 0;
+		done = false;
 
 		UM.GetComponent<Upgrades>().dpsLvlInt = 1;
 		UM.GetComponent<Upgrades>().heroLvlInt = 1;
@@ -175,6 +221,33 @@ public class GameManager : MonoBehaviour {
 		{
 			SettingsPanel.SetActive(true);
 			UpgradePanel.SetActive(false);
+		}
+	}
+
+	public void MoreHeros()
+	{
+		if (bossesKilled > 0) {
+			Sivir.SetActive (true);
+		} 
+		else 
+		{
+			Sivir.SetActive (false);
+		}
+
+		if (bossesKilled > 4) {
+			Mercy.SetActive (true);
+		} 
+		else 
+		{
+			Mercy.SetActive (false);
+		}
+
+		if (bossesKilled > 9) {
+			Ahri.SetActive (true);
+		} 
+		else 
+		{
+			Ahri.SetActive (false);
 		}
 	}
 
