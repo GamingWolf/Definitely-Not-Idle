@@ -8,7 +8,7 @@ using UnityEngine.UI;
 public class GameManager : MonoBehaviour {
 
 
-	public Text ducatDisp, stageDisp, dpsDisp, healthText, killedEnemies, clickDamageDisp;
+	public Text ducatDisp, stageDisp, dpsDisp, healthText, killedEnemies, clickDamageDisp, Infinity;
 
 	public Text[] bossText;
 
@@ -28,7 +28,8 @@ public class GameManager : MonoBehaviour {
 					heroClickDamage = 4.5, 
 					enemyHPMax,
 					bossHP = 1000,
-					tickRate = 2;
+					tickRate = 2,
+	                infinity = 0;
 
 	public bool done = false;
 		
@@ -63,6 +64,7 @@ public class GameManager : MonoBehaviour {
 		clickDamageDisp.text = "Hero Damage: " + heroClickDamage.ToString("0.00E+0");;
 		healthText.text = "HP: " + enemyHP.ToString("0.00E+0") + " / " + enemyHPMax.ToString("0.00E+0");
 		killedEnemies.text = "Enemies killed: " + killedEn;
+		Infinity.text = "Infinity: " + infinity;
 		healthbar.value = CalculateHealth ();
 		EnemyInit ();
 
@@ -192,6 +194,9 @@ public class GameManager : MonoBehaviour {
 		UM.GetComponent<Upgrades>().tickLvlint = loadedStats[15];
 		UM.GetComponent<Upgrades>().dpsCostInt = loadedStats[16];
 		UM.GetComponent<Upgrades>().heroCostInt = loadedStats[17];
+
+		//Infinity data = Prestige
+		infinity = loadedStats[18];
 	}
 
 	public void NewGame()
@@ -207,6 +212,7 @@ public class GameManager : MonoBehaviour {
 		bossesKilled = 0;
 		stagesUntilBoss = 99;
 		killedEn = 0;
+		infinity++;
 		done = false;
 
 		UM.GetComponent<Upgrades>().dpsLvlInt = 1;

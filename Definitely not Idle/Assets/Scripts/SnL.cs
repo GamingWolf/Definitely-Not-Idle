@@ -38,7 +38,7 @@ public static class SnL
 			return data.stats;
 		}
 		else {
-			return new double[18];
+			return new double[19];
 		}
 	}
 }
@@ -51,7 +51,7 @@ public class PlayerData
 	public PlayerData(GameManager GM, GameObject UM) 
 	{
 		//gm double data
-		stats = new double[18];
+		stats = new double[19];
 		stats[0] = GM.ducats;
 		stats[1] = GM.enemyHP;
 		stats[2] = GM.dps;
@@ -74,5 +74,8 @@ public class PlayerData
 		stats[15] = UM.GetComponent<Upgrades>().tickLvlint;
 		stats[16] = UM.GetComponent<Upgrades>().dpsCostInt;
 		stats[17] = UM.GetComponent<Upgrades>().heroCostInt;
+
+		//Infinity data = Prestige
+		stats[18] = GM.infinity;
 	}
 }
